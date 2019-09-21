@@ -15,7 +15,7 @@
 	<form novalidate>
 		<div class="field-name">
 			<i class="fas fa-users"></i>
-			<input type="text" placeholder="Firstname" pattern="[а-яА-ЯёЁ]+" required title="Разрешены только буквы">
+			<input type="text" placeholder="Firstname" required title="Разрешены только буквы">
 			<i class="fas fa-arrow-right"></i>	
 		</div>
 		<div class="field-email innactive">
@@ -30,9 +30,10 @@
 		</div>
 		<div class="field-finish innactive">
 			<i class="fas fa-heart"></i>
-			<p>Thank you!</p>
+			<textarea placeholder="leave a message"></textarea>
 			<i class="fas fa-heart"></i>
 		</div>
+		<div class="error"></div>
 	</form>
 	<script src="main.js"></script>
 </body>
