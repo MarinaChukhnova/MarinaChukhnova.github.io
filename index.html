@@ -12,10 +12,10 @@
 	<title>Form</title>
 </head>
 <body>
-	<form>
+	<form novalidate>
 		<div class="field-name">
 			<i class="fas fa-users"></i>
-			<input type="text" placeholder="Firstname" required>
+			<input type="text" placeholder="Firstname" pattern="[а-яА-ЯёЁ]+" required title="Разрешены только буквы">
 			<i class="fas fa-arrow-right"></i>	
 		</div>
 		<div class="field-email innactive">

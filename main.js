@@ -7,8 +7,7 @@ function nextSlide(parent,nextForm){
 
 
 function animatedForm() {
-	const arrows = document.querySelectorAll
-	('.fa-arrow-right');	
+	const arrows = document.querySelectorAll('.fa-arrow-right');	
 
 
 	arrows.forEach(arrow =>{
@@ -40,10 +39,11 @@ function animatedForm() {
 }
 
 function validateUser(user){
-	if(user.value.length < 6){
+	const validationName =/^[a-zA-Z]*$/;
+	if(user.value.length < 6 || validationName.test(user.value)===false){
 		console.log('not enough characters');
 		error('rgb(189,87,87)');
-	}else{
+	}else {
 		error('rgb(187,189,130)');
 		return true;
 	}

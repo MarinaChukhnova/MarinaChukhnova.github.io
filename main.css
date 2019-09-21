@@ -61,6 +61,24 @@ div.active{
 	transform: translate(-50%,-50%);
 }
 
+.error {
+  width  : 100%;
+  padding: 0;
+ 
+  font-size: 80%;
+  color: white;
+  background-color: #900;
+  border-radius: 0 0 5px 5px;
+ 
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+}
+
+.error.active {
+  padding: 0.3em;
+}
+
 @keyframes shake{
 	0%{
 		transform: translate(-50%,-50%) rotate(0deg);
