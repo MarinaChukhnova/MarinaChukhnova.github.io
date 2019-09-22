@@ -53,7 +53,7 @@ function validateUser(user){
 		errorText.style.border = "2px solid white";
 		error('rgb(189,87,87)');
 	}else {
-		error('rgb(187,189,130)');
+		error('rgb(87,189,130)');
 		return true;
 	}
 }
@@ -61,7 +61,7 @@ function validateUser(user){
 function validateEmail(email){
 	const validationEmail =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	if(validationEmail.test(email.value)){
-		error('rgb(187,189,130)');
+		error('rgb(87,189,130)');
 		return true;
 	}else{
 		errorText.innerHTML = 'Enter a valid email!';
@@ -79,7 +79,7 @@ function validatePassword (password){
 	const Error5 =/(?=.{8,})/;
 
 	if(validationPassword.test(password.value)){
-		error('rgb(187,189,130)');
+		error('rgb(87,189,130)');
 		return true;
 	}else if (Error1.test(password.value) === false || 
 			  Error2.test(password.value) === false ||
