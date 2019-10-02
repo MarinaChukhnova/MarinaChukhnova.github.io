@@ -98,8 +98,6 @@ input[type=submit]:hover, input[type=submit]:active, input[type=submit]:focus{
     outline-offset: 0;
 }
 
-}
-
 @keyframes shake{
 	0%{
 		transform: translate(-50%,-50%) rotate(0deg);
