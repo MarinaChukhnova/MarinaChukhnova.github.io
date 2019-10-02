@@ -43,6 +43,16 @@ function animatedForm() {
 }
 
 const errorText = document.querySelector('.error');
+
+const validationName = /^[a-zA-Z ]*$/,
+      validationEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+      validationPassword =/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+      PasswordError1 =/(?=.*[a-z])/,
+	  PasswordError2 =/(?=.*[A-Z])/,
+	  PasswordError3 =/(?=.*[0-9])/,
+	  PasswordError4 =/(?=.*[!@#\$%\^&\*])/,
+	  PasswordError5 =/(?=.{8,})/;
+	  
 	
 function errorTextStyle(){
 	errorText.style.color = "white";
@@ -50,7 +60,6 @@ function errorTextStyle(){
 } 
 
 function validateUser(user){
-	const validationName =/^[a-zA-Z ]*$/;
 	if(user.value.length < 3 || validationName.test(user.value)===false){
 		//console.log('not enough characters');
 		errorTextStyle();
@@ -63,7 +72,6 @@ function validateUser(user){
 }
 
 function validateEmail(email){
-	const validationEmail =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	if(validationEmail.test(email.value)){
 		error('rgb(87,189,130)');
 		return true;
@@ -75,27 +83,20 @@ function validateEmail(email){
 }
 
 function validatePassword (password){
-	const validationPassword =/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
-	const Error1 =/(?=.*[a-z])/;
-	const Error2 =/(?=.*[A-Z])/;
-	const Error3 =/(?=.*[0-9])/;
-	const Error4 =/(?=.*[!@#\$%\^&\*])/;
-	const Error5 =/(?=.{8,})/;
-
 	if(validationPassword.test(password.value)){
 		error('rgb(87,189,130)');
 		return true;
-	}else if (Error1.test(password.value) === false || 
-			  Error2.test(password.value) === false ||
-			  Error3.test(password.value) === false){
+	}else if (PasswordError1.test(password.value) === false || 
+			  PasswordError2.test(password.value) === false ||
+			  PasswordError3.test(password.value) === false){
 		errorText.innerHTML = 'Your password is too simple.The password must contain at least 1 lowercase, uppercase and numeric alphabetical character.';
 		errorTextStyle();
 		error('rgb(189,87,87)');
-	}else if (Error4.test(password.value)){
+	}else if (PasswordError4.test(password.value)){
 		errorText.innerHTML = 'Change your password.The string must contain at least one special character (!, @, #, $, %, ^, &, *).';
 		errorTextStyle();
 		error('rgb(189,87,87)');
-	}else if (Error5.test(password.value) === false){
+	}else if (PasswordError5.test(password.value) === false){
 		errorText.innerHTML = 'Change your password.The string must be eight characters or longer!';
 		errorTextStyle();
 		error('rgb(189,87,87)');
