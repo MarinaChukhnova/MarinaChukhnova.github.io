@@ -59,9 +59,9 @@ function errorTextStyle(){
 	error('rgb(189,87,87)');
 } 
 
-function correctFilling(){
+function correctFillingStyle(){
 	error('rgb(87,189,130)');
-        return true;
+       // return true;
 } 
 
 function validateUser(user){
@@ -70,13 +70,15 @@ function validateUser(user){
 		errorTextStyle();
 		errorText.innerHTML = 'Enter a valid name!';
 	}else {
-		correctFilling();
+		correctFillingStyle();
+		return true;
 	}
 }
 
 function validateEmail(email){
 	if(validationEmail.test(email.value)){
-		correctFilling();
+		correctFillingStyle();
+		return true;
 	}else{
 		errorText.innerHTML = 'Enter a valid email!';
 		errorTextStyle();
@@ -85,7 +87,8 @@ function validateEmail(email){
 
 function validatePassword (password){
 	if(validationPassword.test(password.value)){
-		correctFilling();
+		correctFillingStyle();
+		return true;
 	}else if (PasswordError1.test(password.value) === false || 
 			  PasswordError2.test(password.value) === false ||
 			  PasswordError3.test(password.value) === false){
