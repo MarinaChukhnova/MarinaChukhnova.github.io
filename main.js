@@ -46,10 +46,10 @@ const validationName = /^[a-zA-Z ]*$/,
       validationEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
       validationPassword =/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
       PasswordError1 =/(?=.*[a-z])/,
-	  PasswordError2 =/(?=.*[A-Z])/,
-	  PasswordError3 =/(?=.*[0-9])/,
-	  PasswordError4 =/(?=.*[!@#\$%\^&\*])/,
-	  PasswordError5 =/(?=.{8,})/;
+      PasswordError2 =/(?=.*[A-Z])/,
+      PasswordError3 =/(?=.*[0-9])/,
+      PasswordError4 =/(?=.*[!@#\$%\^&\*])/,
+      PasswordError5 =/(?=.{8,})/;
 	  
 const errorText = document.querySelector('.error');	
 
@@ -59,19 +59,24 @@ function errorTextStyle(){
 	error('rgb(189,87,87)');
 } 
 
+function correctFillingStyle(){
+	error('rgb(87,189,130)');
+       // return true;
+} 
+
 function validateUser(user){
 	if(user.value.length < 3 || validationName.test(user.value)===false){
 		errorTextStyle();
 		errorText.innerHTML = 'Enter a valid name!';
 	}else {
-		error('rgb(87,189,130)');
+		correctFillingStyle();
 		return true;
 	}
 }
 
 function validateEmail(email){
 	if(validationEmail.test(email.value)){
-		error('rgb(87,189,130)');
+		correctFillingStyle();
 		return true;
 	}else{
 		errorText.innerHTML = 'Enter a valid email!';
@@ -81,7 +86,7 @@ function validateEmail(email){
 
 function validatePassword (password){
 	if(validationPassword.test(password.value)){
-		error('rgb(87,189,130)');
+		correctFillingStyle();
 		return true;
 	}else if (PasswordError1.test(password.value) === false || 
 			  PasswordError2.test(password.value) === false ||
