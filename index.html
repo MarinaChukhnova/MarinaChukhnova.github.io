@@ -12,26 +12,26 @@
 	<title>Form</title>
 </head>
 <body>
-	<form novalidate>
+	<form id ="form" novalidate>
 		<div class="field-name">
 			<i class="fas fa-users"></i>
-			<input type="text" placeholder="Username" required title="Only letters allowed">
+			<input type="text" name="text" placeholder="Username" required title="Only letters allowed">
 			<i class="fas fa-arrow-right"></i>	
 		</div>
 		<div class="field-email innactive">
 			<i class="fas fa-envelope-open-text"></i>
-			<input type="email" placeholder="Email" required>
+			<input type="email" name="email" placeholder="Email" required>
 			<i class="fas fa-arrow-right"></i>	
 		</div>
 		<div class="field-password innactive">
 			<i class="fas fa-key"></i>
-			<input type="password" placeholder="Password" required>
+			<input type="password" name="password" placeholder="Password" required>
 			<i class="fas fa-arrow-right"></i>
 		</div>
 		<div class="field-finish innactive">
 			<i class="fab fa-medapps"></i>
-			<textarea placeholder="leave a message" maxlength="100"></textarea>
-			<input type="submit" value="Send form" onclick="alert('Form Submitted')">
+			<textarea placeholder="leave a message"name="textarea" maxlength="100"></textarea>
+			<input type="submit" id ="send-form"value="Send form">
 		</div>
 		<!--<div class="submit">
 			<input type="submit" value="Send">

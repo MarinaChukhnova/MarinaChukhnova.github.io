@@ -14,9 +14,9 @@ function animatedForm() {
 			const parent = arrow.parentElement;
 			const nextForm = parent.nextElementSibling;
 
-			console.log(input, 'input');
-			console.log(parent,'parent');
-			console.log(nextForm,'nextForm');
+			//console.log(input, 'input');
+			//console.log(parent,'parent');
+			//console.log(nextForm,'nextForm');
 
 			function NextSlide(){
 				nextSlide(parent, nextForm);
@@ -61,7 +61,6 @@ function errorTextStyle(){
 
 function correctFillingStyle(){
 	error('rgb(87,189,130)');
-       // return true;
 } 
 
 function validateUser(user){
@@ -107,3 +106,74 @@ function error(color){
 }
 
 animatedForm();
+
+//receiving form data
+function receivingData (form) {
+    if (!form || form.nodeName !== 'FORM') {
+            return false;
+    }
+    let i, j, arrayDataForm = [];
+    for (i = form.elements.length - 1; i >= 0; i = i - 1) {
+        if (form.elements[i].name === '') {
+            continue;
+        }
+        switch (form.elements[i].nodeName) {
+            case 'INPUT':
+                switch (form.elements[i].type) {
+                    case 'text':
+                    case 'tel':
+                    case 'email':
+                    case 'hidden':
+                    case 'password':
+                    case 'button':
+                    case 'reset':
+                    case 'submit':
+                        arrayDataForm.push(form.elements[i].name + '=' + encodeURIComponent(form.elements[i].value));
+                        break;
+                    case 'checkbox':
+                    case 'radio':
+                        if (form.elements[i].checked) {
+                                arrayDataForm.push(form.elements[i].name + '=' + encodeURIComponent(form.elements[i].value));
+                        }                                               
+                        break;
+                }
+                break;
+                case 'file':
+                break; 
+            case 'TEXTAREA':
+                    arrayDataForm.push(form.elements[i].name + '=' + encodeURIComponent(form.elements[i].value));
+                    break;
+            case 'SELECT':
+                switch (form.elements[i].type) {
+                    case 'select-one':
+                        arrayDataForm.push(form.elements[i].name + '=' + encodeURIComponent(form.elements[i].value));
+                        break;
+                    case 'select-multiple':
+                        for (j = form.elements[i].options.length - 1; j >= 0; j = j - 1) {
+                            if (form.elements[i].options[j].selected) {
+                                    arrayDataForm.push(form.elements[i].name + '=' + encodeURIComponent(form.elements[i].options[j].value));
+                            }
+                        }
+                        break;
+                }
+                break;
+            case 'BUTTON':
+                switch (form.elements[i].type) {
+                    case 'reset':
+                    case 'submit':
+                    case 'button':
+                        arrayDataForm.push(form.elements[i].name + '=' + encodeURIComponent(form.elements[i].value));
+                        break;
+                }
+                break;
+            }
+        }
+    return arrayDataForm.join(' ');
+}
+ const sendForm = document.getElementById('send-form');
+ const form  = document.getElementById('form');
+
+ sendForm.onclick = function (event){
+  	event.preventDefault();
+  	console.log(receivingData(form));
+  }
