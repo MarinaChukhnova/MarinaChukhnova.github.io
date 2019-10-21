@@ -168,7 +168,7 @@ function receivingData (form) {
                 break;
             }
         }
-    return arrayDataForm.join(' ');
+    return arrayDataForm.join('; ');
 }
  const sendForm = document.getElementById('send-form');
  const form  = document.getElementById('form');
