@@ -2,7 +2,7 @@ function nextSlide(parent,nextForm){
 	parent.classList.add('innactive');
 	parent.classList.remove('active');
 	nextForm.classList.add('active');
-	//nextForm.classList.add('innactive');
+	nextForm.classList.add('innactive');
 }
 
 function animatedForm() {
@@ -13,10 +13,6 @@ function animatedForm() {
 			const input = arrow.previousElementSibling;
 			const parent = arrow.parentElement;
 			const nextForm = parent.nextElementSibling;
-
-			//console.log(input, 'input');
-			//console.log(parent,'parent');
-			//console.log(nextForm,'nextForm');
 
 			function NextSlide(){
 				nextSlide(parent, nextForm);
@@ -168,7 +164,7 @@ function receivingData (form) {
                 break;
             }
         }
-    return arrayDataForm.join('; ');
+    return arrayDataForm.join(' ');
 }
  const sendForm = document.getElementById('send-form');
  const form  = document.getElementById('form');
