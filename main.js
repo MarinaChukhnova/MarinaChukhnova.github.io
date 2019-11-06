@@ -172,4 +172,38 @@ function receivingData (form) {
  sendForm.onclick = function (event){
   	event.preventDefault();
   	console.log(receivingData(form));
+  	sum();
+  }
+
+ /* Данная функция создаёт кроссбраузерный объект XMLHTTP */
+  function getXmlHttp() {
+    var xmlhttp;
+    try {
+      xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (e) {
+    try {
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    } catch (E) {
+      xmlhttp = false;
+    }
+    }
+    if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+      xmlhttp = new XMLHttpRequest();
+    }
+    return xmlhttp;
+  }
+  function sum() {
+    var field_name = document.querySelector('.field-name').value; // Считываем значение a
+    var field_email = document.querySelector('.field-email').value; // Считываем значение b
+    var xmlhttp = getXmlHttp(); // Создаём объект XMLHTTP
+    xhr.open('POST', url, true); // Открываем асинхронное соединение
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Отправляем кодировку
+    xmlhttp.send("field_name=" + encodeURIComponent(field_name) + "&field_email=" + encodeURIComponent(field_email)); // Отправляем POST-запрос
+    xmlhttp.onreadystatechange = function() { // Ждём ответа от сервера
+      if (xmlhttp.readyState == 4) { // Ответ пришёл
+        if(xmlhttp.status == 200) { // Сервер вернул код 200 (что хорошо)
+          document.querySelector('.sum').innerHTML = xmlhttp.responseText; // Выводим ответ сервера
+        }
+      }
+    };
   }
